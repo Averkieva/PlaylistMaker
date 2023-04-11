@@ -13,24 +13,19 @@ class MainActivity : AppCompatActivity() {
         val sBut = findViewById<Button>(R.id.search)
         val mBut = findViewById<Button>(R.id.media)
         val setBut = findViewById<Button>(R.id.settings)
+
         sBut.setOnClickListener{
-            //Toast.makeText(this@MainActivity, "Нажали на кнопку Поиск", Toast.LENGTH_SHORT).show()
-            val searchIntent = Intent(this@MainActivity, SearchingActivity::class.java)
-            startActivity(searchIntent)
-        }
-       // val mediaClickListener: View.OnClickListener = object : View.OnClickListener {
-           // override fun onClick(v: View?) {
-              //  Toast.makeText(this@MainActivity, "Нажали на кнопку Медиатека", Toast.LENGTH_SHORT).show()
-            //}
-       // }
+                navigateTo(SearchingActivity::class.java)
+      }
         mBut.setOnClickListener {
-            val mediaIntent = Intent(this@MainActivity, MediatekaActivity::class.java)
-            startActivity(mediaIntent)
+            navigateTo(MediatekaActivity::class.java)
         }
         setBut.setOnClickListener {
-            //Toast.makeText(this@MainActivity, "Нажали на кнопку Настройки", Toast.LENGTH_SHORT).show()
-            val settingIntent = Intent(this@MainActivity, SettingsActivity::class.java)
-            startActivity(settingIntent)
+            navigateTo(SettingsActivity::class.java)
         }
+    }
+    private fun navigateTo(clazz: Class<out AppCompatActivity>) {
+        val intent = Intent(this, clazz)
+        startActivity(intent)
     }
 }
